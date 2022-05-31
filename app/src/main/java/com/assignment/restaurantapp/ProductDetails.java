@@ -29,6 +29,11 @@ public class ProductDetails extends AppCompatActivity {
         Intent intent = getIntent();
         product = intent.getParcelableExtra(KEY);
 
+        for (Product p : CartLogic.getInstance().getCartProducts()) {
+            if (p.getName().equals(product.getName()))
+                product = p;
+        }
+
         binding.tvName.setText(product.getName());
         binding.tvDescriptionText.setText(product.getDescription());
         String amount = "$" + product.getPrice();
@@ -45,17 +50,21 @@ public class ProductDetails extends AppCompatActivity {
     }
 
     private void addToCart() {
-        Button btn = findViewById(R.id.btn_add_to_cart);
-        btn.setOnClickListener(view -> {
+        binding.btnAddToCart.setOnClickListener(view -> {
 
             String quantity = binding.etQuantity.getText().toString();
 
             if (quantity.isEmpty() || quantity.equals("0"))
                 return;
 
-            product.addQuantity(Integer.parseInt(quantity));
-            if (!CartLogic.getInstance().getCartProducts().contains(product))
+            if (!CartLogic.getInstance().getCartProducts().contains(product)) {
                 CartLogic.getInstance().addProductToCart(product);
+                product.addQuantity(Integer.parseInt(quantity));
+            }else {
+                product.updateQuantity(Integer.parseInt(quantity));
+            }
+            CartLogic.getInstance().updateTotal(product, Integer.parseInt(quantity));
+//            CartLogic.getInstance().updateTotal(product);
 
             Intent intent = newIntent();
             startActivity(intent);

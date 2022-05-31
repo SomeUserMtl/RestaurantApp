@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10dp"
+            android:onClick="listViewer">
+
+            <ImageView
+                android:id="@+id/fl_burgers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/burger_img"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hamburgers" />
+
+            <TextView
+                android:id="@+id/tv_burgers"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_gravity="bottom"
+                android:background="@color/opacity"
+                android:gravity="start|center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/hamburgers"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10dp"
+            android:onClick="listViewer">
+
+            <ImageView
+                android:id="@+id/fl_steaks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/burger_img"
+                android:scaleType="centerCrop"
+                android:src="@drawable/steaks" />
+
+            <TextView
+                android:id="@+id/tv_steaks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/opacity"
+                android:gravity="start|center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/steak"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10dp"
+            android:onClick="listViewer">
+
+            <ImageView
+                android:id="@+id/fl_salads"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/burger_img"
+                android:scaleType="centerCrop"
+                android:src="@drawable/salads" />
+
+            <TextView
+                android:id="@+id/tv_salads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/opacity"
+                android:gravity="start|center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/salad"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10dp"
+            android:onClick="listViewer">
+
+            <ImageView
+                android:id="@+id/fl_drinks"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/burger_img"
+                android:scaleType="centerCrop"
+                android:src="@drawable/drinks" />
+
+            <TextView
+                android:id="@+id/tv_drinks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/opacity"
+                android:gravity="start|center_vertical"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/drinks"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </FrameLayout>
+    </LinearLayout>
+
+</ScrollView>

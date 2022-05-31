@@ -17,7 +17,6 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class ProductList extends AppCompatActivity {
     ActivityProductListBinding binding;
@@ -30,16 +29,14 @@ public class ProductList extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intentIn = getIntent();
-
         String name = intentIn.getStringExtra(KEY);
 
-        Database.populateCategories();
         ListAdapter adapter = new ListAdapter(this,Database.products.get(name));
 
         binding.lvList.setAdapter(adapter);
         binding.lvList.setOnItemClickListener((adapterView, view, position, l) -> {
             Intent intentOut = newIntent();
-            intentOut.putExtra(KEY, Objects.requireNonNull(Database.products.get(name)).get(position));
+            intentOut.putExtra(KEY,Database.products.get(name).get(position));
             startActivity(intentOut);
         });
 

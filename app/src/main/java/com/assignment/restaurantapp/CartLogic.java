@@ -16,7 +16,6 @@ public class CartLogic {
     }
 
     public void addProductToCart(Product product){
-        total += product.getPrice() * product.getQuantity();
         cartProducts.add(product);
     }
 
@@ -24,11 +23,18 @@ public class CartLogic {
         return total;
     }
 
+    public void updateTotal(Product product, int quantity){
+        this.total += (product.getPrice() * quantity);
+    }
+
     public ArrayList<Product> getCartProducts(){
         return cartProducts;
     }
 
     public void clear(){
+        for (Product product : cartProducts) {
+            product.addQuantity(0);
+        }
         cartProducts.clear();
         total = 0;
     }

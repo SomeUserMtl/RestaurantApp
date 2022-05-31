@@ -19,6 +19,10 @@ public class Product implements Parcelable {
     }
 
     public void addQuantity(int q){
+        quantity = q;
+    }
+
+    public void updateQuantity(int q){
         quantity += q;
     }
 
@@ -31,6 +35,7 @@ public class Product implements Parcelable {
         img = in.readInt();
         description = in.readString();
         price = in.readDouble();
+        quantity = in.readInt();
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
@@ -72,5 +77,6 @@ public class Product implements Parcelable {
         parcel.writeInt(img);
         parcel.writeString(description);
         parcel.writeDouble(price);
+        parcel.writeInt(quantity);
     }
 }
