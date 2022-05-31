@@ -6,12 +6,12 @@ import android.os.Parcelable;
 public class Product implements Parcelable {
 
     String name;
-    String img;
+    int img;
     String description;
     double price;
     int quantity;
 
-    public Product(String n, String i, String d, double p){
+    public Product(String n, int i, String d, double p){
         name = n;
         img = i;
         description = d;
@@ -28,7 +28,7 @@ public class Product implements Parcelable {
 
     protected Product(Parcel in) {
         name = in.readString();
-        img = in.readString();
+        img = in.readInt();
         description = in.readString();
         price = in.readDouble();
     }
@@ -53,7 +53,7 @@ public class Product implements Parcelable {
         return description;
     }
 
-    public String getImg() {
+    public int getImg() {
         return img;
     }
 
@@ -69,7 +69,7 @@ public class Product implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
-        parcel.writeString(img);
+        parcel.writeInt(img);
         parcel.writeString(description);
         parcel.writeDouble(price);
     }

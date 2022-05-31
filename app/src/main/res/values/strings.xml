@@ -5,4 +5,11 @@
     <string name="salad">Salad</string>
     <string name="drinks">Drinks</string>
     <string name="burger_img">burger img</string>
+    <string name="init_total">$0.00</string>
+    <string name="total">Total</string>
+    <string name="clear">CLEAR</string>
+    <string name="item_name">Item Name</string>
+    <string name="num">Num</string>
+    <string name="dollar_signs">$$</string>
+    <string name="chicken_burger">Chicken Burger</string>
 </resources>
