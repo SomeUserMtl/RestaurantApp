@@ -6,6 +6,7 @@ import com.assignment.restaurantapp.databinding.ActivityCartBinding;
 
 public class Cart extends AppCompatActivity {
     ActivityCartBinding binding;
+    CartLogic cl = CartLogic.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,10 +14,10 @@ public class Cart extends AppCompatActivity {
         binding = ActivityCartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        String total = "$" + CartLogic.getInstance().getTotal();
+        String total = "$" + cl.getTotal();
         binding.tvTotal.setText(total);
 
-        CartAdapter adapter = new CartAdapter(this,CartLogic.getInstance().getCartProducts());
+        CartAdapter adapter = new CartAdapter(this,cl.getCartProducts());
         binding.lvList.setAdapter(adapter);
 
         clear();
@@ -24,7 +25,7 @@ public class Cart extends AppCompatActivity {
 
     private void clear(){
         binding.btnClear.setOnClickListener(v -> {
-            CartLogic.getInstance().clear();
+            cl.clear();
             binding.tvTotal.setText("$0.0");
             binding.lvList.setAdapter(null);
         });

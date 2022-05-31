@@ -1,5 +1,7 @@
 package com.assignment.restaurantapp;
 
+import static android.view.View.inflate;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +36,7 @@ public class CartAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View v = View.inflate(m_context,R.layout.cart_list_item, null);
-
+        View v = inflate(m_context,R.layout.cart_list_item, null);
 
         TextView tv_name = v.findViewById(R.id.tv_cart_name);
         TextView tv_quantity = v.findViewById(R.id.tv_cart_quantity);

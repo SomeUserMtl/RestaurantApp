@@ -18,6 +18,7 @@ public class ProductDetails extends AppCompatActivity {
     ActivityProductDetailsBinding binding;
     final String KEY = "key";
     Product product;
+    CartLogic cl = CartLogic.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class ProductDetails extends AppCompatActivity {
         Intent intent = getIntent();
         product = intent.getParcelableExtra(KEY);
 
-        for (Product p : CartLogic.getInstance().getCartProducts()) {
+        for (Product p : cl.getCartProducts()) {
             if (p.getName().equals(product.getName()))
                 product = p;
         }
@@ -57,14 +58,13 @@ public class ProductDetails extends AppCompatActivity {
             if (quantity.isEmpty() || quantity.equals("0"))
                 return;
 
-            if (!CartLogic.getInstance().getCartProducts().contains(product)) {
-                CartLogic.getInstance().addProductToCart(product);
+            if (!cl.getCartProducts().contains(product)) {
+                cl.addProductToCart(product);
                 product.addQuantity(Integer.parseInt(quantity));
             }else {
                 product.updateQuantity(Integer.parseInt(quantity));
             }
-            CartLogic.getInstance().updateTotal(product, Integer.parseInt(quantity));
-//            CartLogic.getInstance().updateTotal(product);
+            cl.updateTotal(product, Integer.parseInt(quantity));
 
             Intent intent = newIntent();
             startActivity(intent);

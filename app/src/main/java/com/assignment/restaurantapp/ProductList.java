@@ -21,6 +21,7 @@ import java.util.List;
 public class ProductList extends AppCompatActivity {
     ActivityProductListBinding binding;
     private static final String KEY = "key";
+    Database db = Database.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,12 @@ public class ProductList extends AppCompatActivity {
         Intent intentIn = getIntent();
         String name = intentIn.getStringExtra(KEY);
 
-        ListAdapter adapter = new ListAdapter(this,Database.products.get(name));
+        ListAdapter adapter = new ListAdapter(this,db.getProductCategories(name));
 
         binding.lvList.setAdapter(adapter);
         binding.lvList.setOnItemClickListener((adapterView, view, position, l) -> {
             Intent intentOut = newIntent();
-            intentOut.putExtra(KEY,Database.products.get(name).get(position));
+            intentOut.putExtra(KEY, db.getProductCategories(name).get(position));
             startActivity(intentOut);
         });
 
