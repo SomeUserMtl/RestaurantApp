@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Restaurant</string>
+    <string name="hamburgers">Hamburgers</string>
+    <string name="steak">Steak</string>
+    <string name="salad">Salad</string>
+    <string name="drinks">Drinks</string>
+    <string name="burger_img">burger img</string>
+</resources>
