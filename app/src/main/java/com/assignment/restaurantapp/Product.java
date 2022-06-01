@@ -9,7 +9,6 @@ public class Product implements Parcelable {
     int img;
     String description;
     double price;
-    int quantity;
 
     public Product(String n, int i, String d, double p){
         name = n;
@@ -18,24 +17,11 @@ public class Product implements Parcelable {
         price = p;
     }
 
-    public void addQuantity(int q){
-        quantity = q;
-    }
-
-    public void updateQuantity(int q){
-        quantity += q;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
     protected Product(Parcel in) {
         name = in.readString();
         img = in.readInt();
         description = in.readString();
         price = in.readDouble();
-        quantity = in.readInt();
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
@@ -77,6 +63,5 @@ public class Product implements Parcelable {
         parcel.writeInt(img);
         parcel.writeString(description);
         parcel.writeDouble(price);
-        parcel.writeInt(quantity);
     }
 }

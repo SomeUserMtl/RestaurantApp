@@ -30,11 +30,6 @@ public class ProductDetails extends AppCompatActivity {
         Intent intent = getIntent();
         product = intent.getParcelableExtra(KEY);
 
-        for (Product p : cl.getCartProducts()) {
-            if (p.getName().equals(product.getName()))
-                product = p;
-        }
-
         binding.tvName.setText(product.getName());
         binding.tvDescriptionText.setText(product.getDescription());
         String amount = "$" + product.getPrice();
@@ -58,20 +53,15 @@ public class ProductDetails extends AppCompatActivity {
             if (quantity.isEmpty() || quantity.equals("0"))
                 return;
 
-            if (!cl.getCartProducts().contains(product)) {
-                cl.addProductToCart(product);
-                product.addQuantity(Integer.parseInt(quantity));
-            }else {
-                product.updateQuantity(Integer.parseInt(quantity));
-            }
-            cl.updateTotal(product, Integer.parseInt(quantity));
+            cl.addProductToCart(product, Integer.parseInt(quantity));
 
             Intent intent = newIntent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            Toast.makeText(this, quantity + " items added to Cart", Toast.LENGTH_SHORT).show();
             startActivity(intent);
         });
     }
     public Intent newIntent() {
-        return new Intent(this, Cart.class);
+        return new Intent(this, ProductList.class);
     }
-
 }

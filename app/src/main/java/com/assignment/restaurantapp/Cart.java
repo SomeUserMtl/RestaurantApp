@@ -17,7 +17,7 @@ public class Cart extends AppCompatActivity {
         String total = "$" + cl.getTotal();
         binding.tvTotal.setText(total);
 
-        CartAdapter adapter = new CartAdapter(this,cl.getCartProducts());
+        CartAdapter adapter = new CartAdapter(this,cl.getCartProducts(), cl.getProductQuantity());
         binding.lvList.setAdapter(adapter);
 
         clear();

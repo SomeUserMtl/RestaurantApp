@@ -9,14 +9,17 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CartAdapter extends BaseAdapter {
     ArrayList<Product> data;
+    HashMap<String, Integer> quantity;
     Context m_context;
 
-    public CartAdapter(Context context, ArrayList<Product> data){
+    public CartAdapter(Context context, ArrayList<Product> data, HashMap<String, Integer> quantity) {
         this.data = data;
         this.m_context = context;
+        this.quantity = quantity;
     }
 
     @Override
@@ -44,10 +47,10 @@ public class CartAdapter extends BaseAdapter {
         TextView tv_total = v.findViewById(R.id.tv_cart_total);
 
         tv_name.setText(data.get(i).getName());
-        tv_quantity.setText(String.valueOf(data.get(i).getQuantity()));
+        tv_quantity.setText(String.valueOf(quantity.get(data.get(i).getName())));
         tv_price.setText(String.valueOf(data.get(i).getPrice()));
-        tv_total.setText(String.valueOf(data.get(i).getPrice() * data.get(i).getQuantity()));
+        //noinspection ConstantConditions
+        tv_total.setText(String.valueOf(data.get(i).getPrice() * quantity.get(data.get(i).getName())));
         return v;
     }
-
 }

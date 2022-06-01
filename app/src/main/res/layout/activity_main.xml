@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -13,9 +13,9 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="188dp"
             android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:onClick="listViewer">
 
@@ -43,9 +43,9 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="188dp"
             android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:onClick="listViewer">
 
@@ -60,7 +60,7 @@
             <TextView
                 android:id="@+id/tv_steaks"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="bottom"
                 android:background="@color/opacity"
                 android:gravity="start|center_vertical"
@@ -73,9 +73,9 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="188dp"
             android:layout_marginStart="10sp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:onClick="listViewer">
 
@@ -90,7 +90,7 @@
             <TextView
                 android:id="@+id/tv_salads"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="bottom"
                 android:background="@color/opacity"
                 android:gravity="start|center_vertical"
@@ -103,7 +103,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="188dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10dp"
@@ -120,7 +120,7 @@
             <TextView
                 android:id="@+id/tv_drinks"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="bottom"
                 android:background="@color/opacity"
                 android:gravity="start|center_vertical"

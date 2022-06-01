@@ -1,41 +1,52 @@
 package com.assignment.restaurantapp;
-
 import java.util.ArrayList;
-
+import java.util.HashMap;
 public class CartLogic {
 
-    private static CartLogic isntance;
+    private static CartLogic instance;
+    HashMap<String, Integer> productQuantity = new HashMap<>();
     ArrayList<Product> cartProducts = new ArrayList<>();
     double total;
+    int prevQuantity;
+
 
     public static CartLogic getInstance(){
-        if(isntance == null){
-            isntance = new CartLogic();
+        if(instance == null){
+            instance = new CartLogic();
         }
-        return isntance;
+        return instance;
     }
 
-    public void addProductToCart(Product product){
-        cartProducts.add(product);
+    public void addProductToCart(Product product, int quantity){
+
+        if(productQuantity.containsKey(product.getName())){
+            //noinspection ConstantConditions
+            prevQuantity = productQuantity.get(product.getName());
+            productQuantity.put(product.getName(), quantity += prevQuantity);
+        }
+        else{
+            productQuantity.put(product.getName(), quantity);
+            cartProducts.add(product);
+        }
+        total += product.price * (quantity - prevQuantity);
     }
 
     public double getTotal() {
         return total;
     }
 
-    public void updateTotal(Product product, int quantity){
-        this.total += (product.getPrice() * quantity);
+    public HashMap<String, Integer> getProductQuantity() {
+        return productQuantity;
     }
 
-    public ArrayList<Product> getCartProducts(){
+    public ArrayList<Product> getCartProducts() {
         return cartProducts;
     }
 
     public void clear(){
-        for (Product product : cartProducts) {
-            product.addQuantity(0);
-        }
         cartProducts.clear();
-        total = 0;
+        productQuantity.clear();
+        total = 0.0;
+        prevQuantity = 0;
     }
 }
