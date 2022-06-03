@@ -57,7 +57,8 @@ public class ProductDetails extends AppCompatActivity {
 
             Intent intent = newIntent();
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            Toast.makeText(this, quantity + " items added to Cart", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, quantity + " " + product.getName() + " added to Cart",
+                    Toast.LENGTH_SHORT).show();
             startActivity(intent);
         });
     }

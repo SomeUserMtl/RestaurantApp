@@ -23,12 +23,13 @@ public class CartLogic {
             //noinspection ConstantConditions
             prevQuantity = productQuantity.get(product.getName());
             productQuantity.put(product.getName(), quantity += prevQuantity);
+            total += product.price * (quantity - prevQuantity);
         }
         else{
             productQuantity.put(product.getName(), quantity);
             cartProducts.add(product);
+            total += product.price * quantity;
         }
-        total += product.price * (quantity - prevQuantity);
     }
 
     public double getTotal() {

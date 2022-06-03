@@ -18,9 +18,6 @@ public class ProductList extends AppCompatActivity {
         binding = ActivityProductListBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        Intent intentIn = getIntent();
-//        String name = intentIn.getStringExtra(KEY);
-
         SharedPreferences sharedPreferences = getSharedPreferences(KEY, MODE_PRIVATE);
         String name = sharedPreferences.getString(KEY, "");
 
