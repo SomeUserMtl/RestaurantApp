@@ -15,10 +15,10 @@ import com.assignment.restaurantapp.databinding.ActivityProductDetailsBinding;
 import java.util.ArrayList;
 
 public class ProductDetails extends AppCompatActivity {
-    ActivityProductDetailsBinding binding;
-    final String KEY = "key";
-    Product product;
-    CartLogic cl = CartLogic.getInstance();
+    private ActivityProductDetailsBinding binding;
+    private final String KEY = "key";
+    private Product product;
+    private final CartLogic cl = CartLogic.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

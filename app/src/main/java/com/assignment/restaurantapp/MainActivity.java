@@ -12,24 +12,23 @@ import android.widget.TextView;
 import com.assignment.restaurantapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
-    final String KEY = "key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 
     public void listViewer(View view) {
         FrameLayout frameLayout= (FrameLayout) view;
         TextView textView = (TextView) frameLayout.getChildAt(1);
+        String KEY = "key";
+
         SharedPreferences sharedPreferences = getSharedPreferences(KEY, MODE_PRIVATE);
         sharedPreferences.edit().putString("key", textView.getText().toString()).apply();
 
         Intent intent = new Intent(this, ProductList.class);
-//        intent.putExtra(KEY,textView.getText().toString());
         startActivity(intent);
     }
 }

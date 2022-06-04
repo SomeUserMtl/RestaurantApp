@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListAdapter extends BaseAdapter {
-    ArrayList<Product> data;
-    Context m_context;
+    private ArrayList<Product> data;
+    private Context context;
 
     public ListAdapter(Context context, ArrayList<Product> data){
         this.data = data;
-        this.m_context = context;
+        this.context = context;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        View v = View.inflate(m_context,R.layout.product_list_item, null);
+        View v = View.inflate(context,R.layout.product_list_item, null);
         TextView tv_name = v.findViewById(R.id.tv_item_name);
         tv_name.setText(data.get(i).getName());
         return v;

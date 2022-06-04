@@ -1,14 +1,26 @@
 package com.assignment.restaurantapp;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 public class CartLogic {
 
-    private static CartLogic instance;
-    HashMap<String, Integer> productQuantity = new HashMap<>();
-    ArrayList<Product> cartProducts = new ArrayList<>();
-    double total;
-    int prevQuantity;
+    static class CartItem {
+        Product product;
+        int quantity;
+        double total;
 
+        CartItem(Product product, int quantity, double total){
+            this.product = product;
+            this.quantity = quantity;
+            this.total = total;
+        }
+    }
+
+    private static CartLogic instance;
+    private ArrayList<CartItem> cartItems = new ArrayList<>();
+    private HashMap<String, Integer> itemIndex = new HashMap<>();
+    private double total;
+    private int arrayIndex;
 
     public static CartLogic getInstance(){
         if(instance == null){
@@ -18,36 +30,40 @@ public class CartLogic {
     }
 
     public void addProductToCart(Product product, int quantity){
+        Integer index = isInCart(product);
+        if(index == null){
+            CartItem newCartItem = new CartItem(product, quantity, product.getPrice() * quantity);
+            cartItems.add(newCartItem);
+            itemIndex.put(product.getName(), arrayIndex);
+            total += newCartItem.total;
+            arrayIndex++;
+        }
+        else {
+            CartItem cartItem = cartItems.get(index);
+            cartItem.quantity += quantity;
+            cartItem.total = cartItem.product.getPrice() * cartItem.quantity;
+            total += cartItem.product.getPrice() * quantity;
+        }
+    }
 
-        if(productQuantity.containsKey(product.getName())){
-            //noinspection ConstantConditions
-            prevQuantity = productQuantity.get(product.getName());
-            productQuantity.put(product.getName(), quantity += prevQuantity);
-            total += product.price * (quantity - prevQuantity);
-        }
-        else{
-            productQuantity.put(product.getName(), quantity);
-            cartProducts.add(product);
-            total += product.price * quantity;
-        }
+    private Integer isInCart(Product product) {
+        if (itemIndex.containsKey(product.getName()))
+            return itemIndex.get(product.getName());
+        return null;
     }
 
     public double getTotal() {
         return total;
     }
 
-    public HashMap<String, Integer> getProductQuantity() {
-        return productQuantity;
-    }
-
-    public ArrayList<Product> getCartProducts() {
-        return cartProducts;
+    public ArrayList<CartItem> getCartProducts() {
+        return cartItems;
     }
 
     public void clear(){
-        cartProducts.clear();
-        productQuantity.clear();
+        cartItems.clear();
+        itemIndex.clear();
         total = 0.0;
-        prevQuantity = 0;
+        arrayIndex = 0;
     }
 }

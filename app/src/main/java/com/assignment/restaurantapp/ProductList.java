@@ -7,10 +7,9 @@ import android.os.Bundle;
 import com.assignment.restaurantapp.databinding.ActivityProductListBinding;
 
 public class ProductList extends AppCompatActivity {
-    ActivityProductListBinding binding;
+    private ActivityProductListBinding binding;
     private static final String KEY = "key";
-    Database db = Database.getInstance();
-    ListAdapter adapter;
+    private final Database db = Database.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +20,7 @@ public class ProductList extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(KEY, MODE_PRIVATE);
         String name = sharedPreferences.getString(KEY, "");
 
-        adapter = new ListAdapter(this,db.getProductCategories(name));
+        ListAdapter adapter = new ListAdapter(this, db.getProductCategories(name));
 
         binding.lvList.setAdapter(adapter);
         binding.lvList.setOnItemClickListener((adapterView, view, position, l) -> {

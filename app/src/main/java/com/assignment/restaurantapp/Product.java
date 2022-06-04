@@ -5,10 +5,10 @@ import android.os.Parcelable;
 
 public class Product implements Parcelable {
 
-    String name;
-    int img;
-    String description;
-    double price;
+    private final String name;
+    private final int img;
+    private final String description;
+    private final double price;
 
     public Product(String n, int i, String d, double p){
         name = n;

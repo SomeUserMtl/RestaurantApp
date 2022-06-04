@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/hersh/Desktop/RestaurantApp/app/src/main/res/layout-land/activity_cart.xml" value="0.1472663139329806" />
         <entry key="..\:/Users/hersh/Desktop/RestaurantApp/app/src/main/res/layout-land/activity_main.xml" value="0.30599647266313934" />
         <entry key="..\:/Users/hersh/Desktop/RestaurantApp/app/src/main/res/layout-land/activity_product_details.xml" value="0.33" />
-        <entry key="..\:/Users/hersh/Desktop/RestaurantApp/app/src/main/res/layout-land/cart_list_item.xml" value="0.30599647266313934" />
+        <entry key="..\:/Users/hersh/Desktop/RestaurantApp/app/src/main/res/layout-land/cart_list_item.xml" value="0.25" />
         <entry key="..\:/Users/hersh/Desktop/RestaurantApp/app/src/main/res/layout/activity_cart.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/hersh/Desktop/RestaurantApp/app/src/main/res/layout/activity_main.xml" value="0.18930714675395527" />
         <entry key="..\:/Users/hersh/Desktop/RestaurantApp/app/src/main/res/layout/activity_product_details.xml" value="0.31657608695652173" />
