@@ -29,10 +29,15 @@ public class CartLogic {
         return instance;
     }
 
-    public void addProductToCart(Product product, int quantity){
+    public boolean addProductToCart(Product product, String quantity){
+
+        if (quantity.isEmpty() || quantity.equals("0"))
+            return false;
+        int quantityInt = Integer.parseInt(quantity);
+
         Integer index = isInCart(product);
         if(index == null){
-            CartItem newCartItem = new CartItem(product, quantity, product.getPrice() * quantity);
+            CartItem newCartItem = new CartItem(product, quantityInt, product.getPrice() * quantityInt);
             cartItems.add(newCartItem);
             itemIndex.put(product.getName(), arrayIndex);
             total += newCartItem.total;
@@ -40,10 +45,11 @@ public class CartLogic {
         }
         else {
             CartItem cartItem = cartItems.get(index);
-            cartItem.quantity += quantity;
+            cartItem.quantity += quantityInt;
             cartItem.total = cartItem.product.getPrice() * cartItem.quantity;
-            total += cartItem.product.getPrice() * quantity;
+            total += cartItem.product.getPrice() * quantityInt;
         }
+        return true;
     }
 
     private Integer isInCart(Product product) {

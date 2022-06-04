@@ -50,10 +50,8 @@ public class ProductDetails extends AppCompatActivity {
 
             String quantity = binding.etQuantity.getText().toString();
 
-            if (quantity.isEmpty() || quantity.equals("0"))
+            if (!cl.addProductToCart(product, quantity))
                 return;
-
-            cl.addProductToCart(product, Integer.parseInt(quantity));
 
             Intent intent = newIntent();
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
