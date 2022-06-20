@@ -18,17 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-    }
 
-    public void listViewer(View view) {
-        FrameLayout frameLayout= (FrameLayout) view;
-        TextView textView = (TextView) frameLayout.getChildAt(1);
-        String KEY = "key";
-
-        SharedPreferences sharedPreferences = getSharedPreferences(KEY, MODE_PRIVATE);
-        sharedPreferences.edit().putString("key", textView.getText().toString()).apply();
-
-        Intent intent = new Intent(this, ProductList.class);
-        startActivity(intent);
+        //set food category fragment
+        FoodCategoryFragment foodCategoryFragment = new FoodCategoryFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.food_category_fragment, foodCategoryFragment).commit();
     }
 }
