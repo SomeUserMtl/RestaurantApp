@@ -5,7 +5,8 @@
     android:layout_margin="15dp"
     android:layout_height="match_parent"
     app:cardCornerRadius="20dp"
-    app:cardElevation="5dp">
+    app:cardElevation="5dp"
+    android:onClick="categorySelected">
 
     <FrameLayout
         android:layout_width="250dp"
@@ -19,6 +20,7 @@
             android:src="@drawable/drinks"
             android:scaleType="centerCrop"/>
         <TextView
+
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@color/white"

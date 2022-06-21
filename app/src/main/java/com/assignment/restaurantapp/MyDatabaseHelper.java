@@ -26,7 +26,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                         "category TEXT, " +
                         "img INTEGER, " +
                         "description TEXT, " +
-                        "price TEXT)");
+                        "price Double)");
         db.execSQL(
                 "CREATE TABLE IF NOT EXISTS categories (" +
                         "name TEXT PRIMARY KEY UNIQUE, " +
@@ -47,12 +47,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     //insert a record into the database
-    public void insertItem(String name, int img, String description, double price) {
+    public void insertItem(String name, String category, int img, String description, double price) {
 
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
+        contentValues.put("category", category);
         contentValues.put("img", img);
         contentValues.put("description", description);
         contentValues.put("price", price);
@@ -89,6 +90,23 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.insert("categories", null, contentValues);
     }
 
+    //get an item from Items table by name and return a Items object
+    public Items getItem(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM items WHERE name = '" + name + "'", null);
+        Items item = new Items();
+        if (cursor.moveToFirst()) {
+            item.setId(cursor.getInt(0));
+            item.setName(cursor.getString(1));
+            item.setCategory(cursor.getString(2));
+            item.setImg(cursor.getInt(3));
+            item.setDescription(cursor.getString(4));
+            item.setPrice(cursor.getDouble(5));
+        }
+        return item;
+    }
+
+
     //get all the records from the categopry table
     public ArrayList<Category> getCategories() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -101,4 +119,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         }
         return categories;
     }
+    //get all records from items table with category = category
+    public ArrayList<Items> getItems(String category) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<Items> Items = new ArrayList<>();
+        //get curser for items that category = category
+        Cursor cursor = db.rawQuery("SELECT * FROM items WHERE category = '" + category + "'", null);
+        //if there are records in the database, add them to the arraylist
+        if (cursor.moveToFirst()) {
+            do {
+                Items.add(new Items(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getString(4), cursor.getDouble(5)));
+            } while (cursor.moveToNext());
+        }
+        return Items;
+    }
+
 }
